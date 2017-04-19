@@ -26,7 +26,7 @@ namespace InventarioListasSimples
             item.setNombre(txbNombre.Text);
             item.catidad = Convert.ToInt32(txbCandidad.Text);
             item.costo = Convert.ToInt32(txbPrecio.Text);
-
+            //MessageBox.Show("Hola");
             if (almacen.agregarItem(item))
             {
                 MessageBox.Show("Producto agregado");
