@@ -8,108 +8,39 @@ namespace InventarioListasSimples
 {
     class Inventario
     {
-        Producto[] vec;
+        Producto inicio;
+
         public Inventario()
         {
-            vec = new Producto[15];
+            //inicio = new Producto();
         }
 
-        private int _contador = -1;
-        public bool agregarItem(Producto item)
+        public void agregar(Producto nuevo)
         {
-            if (_contador < vec.Length)
-            {
-                _contador++;
-                vec[_contador] = item;
-                return true;
-            }
+            if(inicio == null)
+                inicio = nuevo;
             else
-                return false;
+            {
+                Producto temp = inicio;
+                while (temp.siguiente != null)
+                    temp = temp.siguiente;
+                temp.siguiente = nuevo;
+                
+            }
         }
 
-        public bool eliminarItem(Producto item)
+        public string reporte()
         {
-            try
+            string datos = "";
+
+            Producto t = inicio;
+            while(t != null)
             {
-                int indice = 0;
-                for (int i = 0; i < _contador; i++)
-                {
-                    if (item.codigo == vec[i].codigo)
-                    {
-                        vec[i] = null;
-                        indice = i;
-                    }
-                }
-
-                if (_contador < 2)
-                {
-                    return true;
-                }
-                else
-                {
-                    for (int i = indice; i < _contador; i++)
-                    {
-                        vec[i] = vec[i + 1];
-                    }
-                }
-                _contador--;
+                datos += t.ToString() + Environment.NewLine;
+                t = t.siguiente;
             }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }
 
-        public bool insertarItem(Producto item, int posicion)
-        {
-            if (posicion < vec.Length)
-            {
-                if (_contador < vec.Length)
-                {
-                    for (int i = vec.Length - 1; i >= posicion - 1; i--)
-                    {
-                        if (i == 0)
-                        {
-                            vec[i] = vec[i];
-                        }
-                        else
-                        {
-                            vec[i] = vec[i - 1];
-                        }
-
-                    }
-                }
-                vec[posicion - 1] = item;
-                _contador++;
-            }
-            return true;
-        }
-
-        public string reporteItem()
-        {
-            string cadena = "";
-            for (int i = 0; i < _contador; i++)
-            {
-                cadena += vec[i].ToString() + Environment.NewLine;
-            }
-            return cadena;
-        }
-
-        public Producto buscarProducto(int codigo)
-        {
-            Producto item = new Producto();
-            item.codigo = codigo;
-            for (int i = 0; i <= _contador; i++)
-            {
-                if (item.codigo == vec[i].codigo)
-                {
-                    return item = vec[i];
-
-                }
-            }
-            item = null;
-            return item;
+            return datos;
         }
     }
 }
