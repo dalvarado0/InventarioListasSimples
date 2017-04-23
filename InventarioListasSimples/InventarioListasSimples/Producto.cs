@@ -43,9 +43,27 @@ namespace InventarioListasSimples
             _costo = 0;
         }
 
+        private Producto _siguiente, _temp;
+
+        public void temp(Producto nuevo)
+        {
+            _temp = nuevo;
+        }
+
+        public Producto siguiente 
+        {
+            set
+            {
+                _siguiente = new Producto();
+                _siguiente.siguiente = _temp;
+            }
+            get { return _siguiente;}
+        }
+
         public override string ToString()
         {
             return "Código: " + _codigo.ToString() + " Nombre " + _nombre.ToString() + " Cantidad " + _cantidad.ToString() + " Costo: " + _codigo.ToString();
         }
+
     }
 }
