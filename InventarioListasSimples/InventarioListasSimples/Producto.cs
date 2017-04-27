@@ -43,19 +43,13 @@ namespace InventarioListasSimples
             _costo = 0;
         }
 
-        private Producto _siguiente, _temp;
-
-        public void temp(Producto nuevo)
-        {
-            _temp = nuevo;
-        }
+        private Producto _siguiente;
 
         public Producto siguiente 
         {
             set
             {
-                _siguiente = new Producto();
-                _siguiente.siguiente = _temp;
+                _siguiente = value;
             }
             get { return _siguiente;}
         }
