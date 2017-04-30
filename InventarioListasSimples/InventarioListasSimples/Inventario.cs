@@ -100,6 +100,10 @@ namespace InventarioListasSimples
             Producto item = null, temp = inicio;
             while(temp.siguiente != null)
             {
+                if(temp.codigo == codigo)
+                {
+                    return temp;
+                }
                 if (temp.siguiente.codigo == codigo)
                     item = temp.siguiente;
                 temp = temp.siguiente;
