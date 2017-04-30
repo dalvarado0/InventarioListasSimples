@@ -47,16 +47,23 @@ namespace InventarioListasSimples
 
         public void insertar(Producto nuevo, int posicion)
         {
-            Producto temp = inicio;
+            Producto temp = inicio, antItem;
             int cont = 1;
-            while(temp.siguiente != null || cont < posicion)
+            if(posicion == 1)
             {
-                cont++;
-                if(cont == posicion)
+                nuevo.siguiente = inicio;
+                inicio = nuevo;
+            }
+            else
+            {
+                do
                 {
-                    nuevo.siguiente = temp.siguiente;
-                    temp.siguiente = nuevo;
-                }
+                    antItem = temp;            
+                    temp = temp.siguiente;
+                    cont++;
+                } while (temp.siguiente != null || cont < posicion-1);
+                antItem.siguiente = nuevo;
+                nuevo.siguiente = temp;
             }
         }
 
@@ -95,7 +102,7 @@ namespace InventarioListasSimples
             }
 
             return datos;
-        }
+        
         }
     }
 }
