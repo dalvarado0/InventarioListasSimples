@@ -72,9 +72,26 @@ namespace InventarioListasSimples
             Producto temp = inicio;
             while(temp.siguiente != null)
             {
-                if(temp.siguiente.codigo == codigo)
-                    temp.siguiente = temp.siguiente.siguiente;
-                temp = temp.siguiente;
+                if(temp.codigo == codigo)
+                {
+                    inicio = temp.siguiente;
+                    temp = inicio;
+                }
+                else
+                {
+                    if (temp.siguiente.codigo == codigo)
+                    {
+                        //if(temp.siguiente.siguiente == null)
+                        //{
+                        //    temp.siguiente = null;
+                        //    break;
+                        //}
+                        temp.siguiente = temp.siguiente.siguiente;
+                        break;
+                    }
+                    temp = temp.siguiente;
+                    //if(temp.siguiente.siguiente ==)
+                }
             }
         }
 
