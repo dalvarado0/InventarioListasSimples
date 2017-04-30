@@ -56,7 +56,7 @@ namespace InventarioListasSimples
 
         public override string ToString()
         {
-            return "Código: " + _codigo.ToString() + " Nombre " + _nombre.ToString() + " Cantidad " + _cantidad.ToString() + " Costo: " + _codigo.ToString();
+            return "Código: " + _codigo.ToString() + " Nombre " + _nombre.ToString() + " Cantidad " + _cantidad.ToString() + " Costo: " + _costo.ToString();
         }
 
     }
