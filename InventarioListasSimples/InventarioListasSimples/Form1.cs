@@ -32,12 +32,12 @@ namespace InventarioListasSimples
             item.setNombre(txbNombre.Text);
             item.catidad = Convert.ToInt32(txbCandidad.Text);
             item.costo = Convert.ToInt32(txbPrecio.Text);
-          
+
+            almacen.eliminar(Convert.ToInt32(txbCodigo.Text));
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            txbReporte.Text = "";
             txbReporte.Text = almacen.reporte();
         }
 
@@ -48,7 +48,7 @@ namespace InventarioListasSimples
             item.setNombre(txbNombre.Text);
             item.catidad = Convert.ToInt32(txbCandidad.Text);
             item.costo = Convert.ToInt32(txbPrecio.Text);
-            //almacen.insertarItem(item, Convert.ToInt32(txbPosicion.Text));
+            almacen.insertar(item, Convert.ToInt32(txbPosicion.Text));
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -58,20 +58,14 @@ namespace InventarioListasSimples
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            /*
-           Producto item;
+            Producto item = almacen.buscar(Convert.ToInt32(txbBuscar.Text));
 
-           //item.codigo = Convert.ToInt32(txbBuscar.Text);
-           item = almacen.buscarProducto(Convert.ToInt32(txbBuscar.Text));
-           if (item == null)
-               txbReporte.Text = "No exite el producto";
-           else
-           {
-               txbReporte.Text = item.ToString();
-           }
-           */
+            if(item == null)
+            {
+                txbReporte.Text = "Producto no encontrado";
+            }
+            else
+                txbReporte.Text = item.ToString();
         }
-
-
     }
 }
